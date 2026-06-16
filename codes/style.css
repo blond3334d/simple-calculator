@@ -1,0 +1,12 @@
+* {
+    display: block;
+    width: auto;
+}
+
+.calc-body {
+    background-color: rgba(61, 113, 96, 0.44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25%;
+}
