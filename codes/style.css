@@ -5,8 +5,40 @@
 
 .calc-body {
     background-color: rgba(61, 113, 96, 0.44);
+    width: 20%;
+    margin: 5rem 2.5rem;
+    border-radius: 1rem;
+}
+
+.input-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 25%;
+    padding: 2rem;
+}
+
+.user-input {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 1rem;
+    border: 0;
+}
+
+.calc-buttons {
+    gap: 1rem;
+    width: 100%;
+}
+
+.row {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.button {
+    border: none;
 }
