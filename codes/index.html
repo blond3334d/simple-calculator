@@ -12,81 +12,34 @@
 
         <div class="input-container">
             <div class="input">
-                <input type="text" name="user-input" id="user-input" value="0" readonly>
+                <input type="text" name="userInput" id="userInput" placeholder="0" readonly>
             </div>
         </div>
 
         <div class="calc-button">
 
-            <div class="button-container">
-                <button>7</button>
-            </div>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('&divide;')">&divide;</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('&times;')">&times;</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('&minus;')">&minus;</button>
+            <button class="zero" onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('&plus;')">&plus;</button>
+            <button onclick="calculateResult()">&equals;</button>
 
-            <div class="button-container">
-                <button>8</button>
-            </div>
-
-            <div class="button-container">
-                <button>9</button>
-            </div>
-
-            <div class="button-container">
-                <button>&divide;</button>
-            </div>
-
-            <div class="button-container">
-                <button>4</button>
-            </div>
-
-            <div class="button-container">
-                <button>5</button>
-            </div>
-
-            <div class="button-container">
-                <button>6</button>
-            </div>
-
-            <div class="button-container">
-                <button>&times;</button>
-            </div>
-
-            <div class="button-container">
-                <button>1</button>
-            </div>
-
-            <div class="button-container">
-                <button>2</button>
-            </div>
-
-            <div class="button-container">
-                <button>3</button>
-            </div>
-
-            <div class="button-container">
-                <button>&minus;</button>
-            </div>
-
-            <div class="button-container zero">
-                <button>0</button>
-            </div>
-
-            <div class="button-container dot">
-                <button>.</button>
-            </div>
-
-            <div class="button-container">
-                <button>&plus;</button>
-            </div>
-
-            <div class="button-container">
-                <button>&equals;</button>
-            </div>
         </div>
 
-        <div class="button-container clear" style="grid-area: clear-button">
-            <button>C</button>
-        </div>
-
+            <button class="clear" style="grid-area: clear-button" onclick="clearDisplay()">C</button>
     </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
