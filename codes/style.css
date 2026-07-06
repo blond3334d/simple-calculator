@@ -9,13 +9,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: rgb(23, 27, 61);
 }
 
 .calc-body {
-    background-color: rgb(63, 103, 89);
+    background-color: rgb(99, 106, 154);
+    box-shadow: 0 0 10px rgba(0, 3, 48, 0.923);
     width: 325px;
     height: 420px;
-    margin: 2em 5em;
+    /* margin: 2em 5em; */
     padding: 2em;
     border-radius: 2em;
 }
@@ -23,7 +25,7 @@ body {
 input {
     background: none;
     border: none;
-    background-color: rgb(187, 239, 221);;
+    background-color: rgb(210, 230, 247);;
     width: 100%;
     height: 2em;
 
@@ -48,7 +50,7 @@ button {
     background: none;
     border: none;
     font-weight: bold;
-    background-color: #e3e0e0f5;
+    background-color: #b8cedbf5;
     border-radius: 0.5em;
     font-size: 1.5rem;
     width: auto;
@@ -60,7 +62,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(241, 233, 233);
+    background-color: #d9e0e4f5;
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
@@ -68,32 +70,35 @@ button:active {
     background-color: rgb(255, 255, 255);
 }
 
+.clearBtn {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.clearValue {
+    width: 25%;
+}
 .clear {
-    display: grid;
-    align-items: center;
-
-    width: 100%;
-    background-color:  rgb(241, 168, 79);
-    transition: background-color 0.25s;
+    width: 75%;
 }
 
-.clear:hover {
-    background-color: rgb(245, 167, 73);
-    box-shadow: 0 0 20px rgba(255, 221, 53, 0.5);
-}
-.clear:active {
-    background-color: rgb(250, 198, 143);
-}
-
+.clear,
+.clearValue,
 .zero {
-    background-color: rgb(241, 168, 79);
+    background-color:  rgb(40, 46, 100);
     transition: background-color 0.25s;
+    color: #b8cedbf5;
 }
 
+.clear:hover,
+.clearValue:hover,
 .zero:hover {
-    background-color: rgb(230, 153, 59); 
-    box-shadow: 0 0 20px rgba(255, 221, 53, 0.5);   
+    background-color: rgb(50, 60, 145);
+    box-shadow: 0 0 20px rgb(128, 137, 223);
 }
+.clear:active,
+.clearValue:active,
 .zero:active {
-    background-color: rgb(250, 198, 143);
+    background-color: rgb(128, 137, 223);
 }
