@@ -16,32 +16,33 @@
             </div>
         </div>
 
-        <div class="calc-button">
-
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('&divide;')">&divide;</button>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('&times;')">&times;</button>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('&minus;')">&minus;</button>
-            <button class="zero" onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="appendToDisplay('&plus;')">&plus;</button>
-            <button onclick="calculateResult()">&equals;</button>
-
-        </div>
-
         <div class="clearBtn">
             <button class="clear" style="grid-area: clear-button" onclick="clearDisplay()">AC</button>
             
             <button class="clearValue"  onclick="clearDisplay()">C</button>
         </div>
+
+        <div class="calc-button">
+
+            <button class="numberBtn" onclick="appendToDisplay('7')">7</button>
+            <button class="numberBtn" onclick="appendToDisplay('8')">8</button>
+            <button class="numberBtn" onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('&divide;')">&divide;</button>
+            <button class="numberBtn" onclick="appendToDisplay('4')">4</button>
+            <button class="numberBtn" onclick="appendToDisplay('5')">5</button>
+            <button class="numberBtn" onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('&times;')">&times;</button>
+            <button class="numberBtn" onclick="appendToDisplay('1')">1</button>
+            <button class="numberBtn" onclick="appendToDisplay('2')">2</button>
+            <button class="numberBtn" onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('&minus;')">&minus;</button>
+            <button class="zero" onclick="appendToDisplay('0')">0</button>
+            <button class="numberBtn dot" onclick="appendToDisplay('.')">.</button>
+            <button class="operator" onclick="appendToDisplay('&plus;')">&plus;</button>
+            <button class="result" onclick="calculateResult()">&equals;</button>
+
+        </div>
+
             
     </div>
 
