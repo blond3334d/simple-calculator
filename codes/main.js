@@ -1,81 +1,76 @@
+let currentDisplay = document.getElementById("userInput");
+const numberBtns = document.querySelectorAll(".numberBtn");
+const operators = document.querySelectorAll(".operator");
+let hasDot = document.querySelector('.dot');
 
-// Input
-const result = document.getElementById("userInput");
-const numberBtn = document.querySelectorAll(".numberBtn");
-const operator = document.querySelectorAll(".operator");
+const operations = {
+    '+': (firstNum, secondNum) => firstNum + secondNum,
+    '−': (firstNum, secondNum) => firstNum - secondNum,
+    '×': (firstNum, secondNum) => firstNum * secondNum,
+    '÷': (firstNum, secondNum) => firstNum / secondNum,
+};
 
-let firstInput = "";
-let currentOperator = "";
-let secondInput = "";
+const expression = {
+    displayValue: '0',
+    firstOperand: null,
+    currentOperator: null,
+    secondOperand: null,
+    waitForSecondOperand: false,
+};
 
-operator.forEach((element) => {
-    element.addEventListener("click", e => {
-        currentOperator = e.target.textContent;
+// Getting the operator
+operators.forEach(op => {
+    op.addEventListener("click", e => {
+        expression.currentOperator = e.target.textContent;
+        expression.waitForSecondOperand = true;
+        currentDisplay.value = "";
+        hasDot.disabled = false;
+        expression.displayValue = "";
+
+        console.log(expression.currentOperator);
     })
 });
 
-numberBtn.forEach((number) => {
-    number.addEventListener("click", btn => {
-        if (currentOperator === "") {
-            firstInput += btn.target.textContent;
-            if (btn.target.textContent === '.' && firstInput.includes('.')) {
-                document.querySelector('.dot').disabled = true;
+// Getting the numbers
+numberBtns.forEach(num => {
+    num.addEventListener("click", e => {
+        if (expression.waitForSecondOperand === true) {
+            if (e.target.textContent.includes('.')) {
+                hasDot.disabled = true;
             }
-            console.log(`First ${firstInput}`);
+            expression.displayValue += e.target.textContent;
+            currentDisplay.value += e.target.textContent;
+            expression.secondOperand = parseFloat(expression.displayValue);
+            console.log(`Second ${expression.secondOperand}`);
         } else {
-            document.querySelector('.dot').disabled = false;
-            secondInput += btn.target.textContent;
-            if (btn.target.textContent === '.' && secondInput.includes('.')) {
-                document.querySelector('.dot').disabled = true;
+            if (e.target.textContent.includes('.')) {
+                hasDot.disabled = true;
             }
-            console.log(secondInput);
-        }
+            expression.displayValue += e.target.textContent;
+            currentDisplay.value += e.target.textContent;
+            expression.firstOperand = parseFloat(expression.displayValue);
 
-        
-    })
+            console.log(`First ${expression.firstOperand}`);
+        }
+    });
 });
 
-// Operations
-function add(firstNum, secondNum) {
-    return firstNum + secondNum;
-}
-function subtract(firstNum, secondNum) {
-    return firstNum - secondNum;
-}
-function multiply(firstNum, secondNum) {
-    return firstNum * secondNum;
-}
-function divide(firstNum, secondNum) {
-    return firstNum / secondNum;
-}
-
-// Calculate
+// Calculate result
 function operate() {
-    switch(currentOperator) {
-        case '&plus':
-            result.value = add(firstInput, secondInput);
-            break;
-        case '&minus':
-            result.value = subtract(firstInput, secondInput);
-            break;
-        case '&times':
-            result.value = multiply(firstInput, secondInput);
-            break;
-        case '&divide':
-            result.value = divide(firstInput, secondInput);
-            break;
+    let a = expression.firstOperand;
+    let b = expression.secondOperand;
+    let op = expression.currentOperator;
+
+    if (operations[op]) {
+        currentDisplay.value = operations[op](a, b);
     }
+
+    return null;
 }
 
-// Displaying
-function appendToDisplay(input) {
-    result.value += input;
-}
-
-function clearDisplay(){
-    result.value = "";
-}
-
-function calculateResult() {
-    result.value = operate();
+function clearDisplay() {
+    currentDisplay.value = "";
+    for (key in expression) {
+        expression[key] = '0';
+    }
 }
