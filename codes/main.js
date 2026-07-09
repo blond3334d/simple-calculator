@@ -4,13 +4,9 @@ const operators = document.querySelectorAll(".operator");
 let equalBtn = document.querySelector('.equalBtn');
 let hasDot = document.querySelector('.dot');
 
-let isClicked = false;
+let equalIsClicked = false;
+let opIsClicked = false;
 let result = 0;
-
-equalBtn.addEventListener("click", e => {
-    operate();
-    isClicked = true;
-});
 
 const operations = {
     '+': (firstNum, secondNum) => firstNum + secondNum,
@@ -27,23 +23,65 @@ const expression = {
     waitForSecondOperand: false,
 };
 
-const temp = {
-    tempValue: '0',
-    tempFirstOperand: null,
-    tempCurrentOperator: null,
-    tempSecondOperand: null,
-};
+// const temp = {
+//     tempValue: '0',
+//     tempFirstOperand: null,
+//     tempCurrentOperator: null,
+//     tempSecondOperand: null,
+// };
+
+// Check if each key has value in expression object
+// function isComplete(expression) {
+//     for (mem in expression) {
+//         if (expression[mem] !== '0') {
+//             return true;
+//         }
+
+//         return false;
+//     }
+// }
+
+// console.log(isComplete(expression));
 
 // Getting the operator
 operators.forEach(op => {
     op.addEventListener("click", e => {
+        if (
+            expression.firstOperand !== null &&
+            expression.currentOperator !== null &&
+            expression.secondOperand !== null
+        ) {
+            console.log(operate());
+
+            for (key in expression) {
+                expression[key] = '0';
+            }
+            expression.firstOperand = result;
+            let newOperator = e.target.textContent;
+            console.log(newOperator);
+        }
+
         expression.currentOperator = e.target.textContent;
-        expression.waitForSecondOperand = true;
         currentDisplay.value = "";
+        expression.waitForSecondOperand = true;
         expression.displayValue = "";
         hasDot.disabled = false;
 
         console.log(expression.currentOperator);
+
+        // for (key in expression) {
+        //     if (expression[key] !== '0') {
+        //         operate();
+
+        //         let newOperator = e.target.textContent;
+
+        //         if (expression[key] !== expression.firstOperand) {
+        //             expression[key] = '0';
+        //         } else {
+        //             expression.firstOperand = result;
+        //         }
+        //     }
+        // }
 
     })
 });
@@ -73,7 +111,10 @@ numberBtns.forEach(num => {
     });
 });
 
-
+equalBtn.addEventListener("click", e => {
+    operate();
+    isClicked = true;
+});
 
 // if (expression.secondOperand !== '0' && isClicked === false) {
 //     operate();
@@ -83,8 +124,6 @@ numberBtns.forEach(num => {
 //     expression.currentOperator = op.textContent;
 //     expression.firstOperand = result;
 // }
-
-
 
 
 
@@ -113,7 +152,7 @@ function operate() {
 
     if (operations[op]) {
         result = operations[op](a, b);
-        currentDisplay.value = result;
+        return currentDisplay.value = result;
     }
 
     return null;
