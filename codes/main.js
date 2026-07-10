@@ -4,8 +4,11 @@ const operators = document.querySelectorAll(".operator");
 let equalBtn = document.querySelector('.equalBtn');
 let hasDot = document.querySelector('.dot');
 
+let clearIsClicked = false;
 let equalIsClicked = false;
 let opIsClicked = false;
+let on = false;
+let newOperator = null;
 let result = 0;
 
 const operations = {
@@ -23,25 +26,40 @@ const expression = {
     waitForSecondOperand: false,
 };
 
-// const temp = {
-//     tempValue: '0',
-//     tempFirstOperand: null,
-//     tempCurrentOperator: null,
-//     tempSecondOperand: null,
-// };
+// Calculate result
+function operate() {
+    let a = expression.firstOperand;
+    let b = expression.secondOperand;
+    let op = expression.currentOperator;
 
-// Check if each key has value in expression object
-// function isComplete(expression) {
-//     for (mem in expression) {
-//         if (expression[mem] !== '0') {
-//             return true;
-//         }
+    if (operations[op]) {
+        result = operations[op](a, b);
+        return currentDisplay.value = result;
+    } else {
+        return null;
+    }
+}
 
-//         return false;
-//     }
-// }
+// Clear display
+function clearDisplay() {
+    currentDisplay.value = "";
+    clearExpressionValue();
 
-// console.log(isComplete(expression));
+    clearIsClicked = true;
+    console.log(Object.values(expression));
+}
+
+// Clear key values
+function clearExpressionValue() {
+    for (key in expression) {
+        expression[key] = '0';
+    }
+
+    return expression;
+}
+
+
+
 
 // Getting the operator
 operators.forEach(op => {
@@ -51,38 +69,35 @@ operators.forEach(op => {
             expression.currentOperator !== null &&
             expression.secondOperand !== null
         ) {
-            console.log(operate());
+            operate();
 
-            for (key in expression) {
-                expression[key] = '0';
+            // for (key in expression) {
+            //     expression[key] = '0';
+            // }
+            expression.currentOperator = null;
+            expression.secondOperand = null;
+            expression.waitForSecondOperand = false;
+            expression.displayValue = '0';
+
+            if (clearIsClicked !== true) {
+                expression.firstOperand = result;
             }
-            expression.firstOperand = result;
-            let newOperator = e.target.textContent;
-            console.log(newOperator);
+
+            newOperator = e.target.textContent; 
+            expression.currentOperator = newOperator;
+
+            console.log(Object.values(expression));
+
+            // return currentDisplay.value = result;
+        } else {
+            expression.currentOperator = e.target.textContent;
+            expression.waitForSecondOperand = true;
+            expression.displayValue = "";
+            hasDot.disabled = false;
+            on = true;
         }
 
-        expression.currentOperator = e.target.textContent;
-        currentDisplay.value = "";
-        expression.waitForSecondOperand = true;
-        expression.displayValue = "";
-        hasDot.disabled = false;
-
-        console.log(expression.currentOperator);
-
-        // for (key in expression) {
-        //     if (expression[key] !== '0') {
-        //         operate();
-
-        //         let newOperator = e.target.textContent;
-
-        //         if (expression[key] !== expression.firstOperand) {
-        //             expression[key] = '0';
-        //         } else {
-        //             expression.firstOperand = result;
-        //         }
-        //     }
-        // }
-
+        // console.log(expression.currentOperator);
     })
 });
 
@@ -93,6 +108,12 @@ numberBtns.forEach(num => {
             if (e.target.textContent.includes('.')) {
                 hasDot.disabled = true;
             }
+
+            if (on === true) {
+                currentDisplay.value = "";
+                on = false;
+            }
+
             expression.displayValue += e.target.textContent;
             currentDisplay.value += e.target.textContent;
             expression.secondOperand = parseFloat(expression.displayValue);
@@ -113,54 +134,12 @@ numberBtns.forEach(num => {
 
 equalBtn.addEventListener("click", e => {
     operate();
-    isClicked = true;
+    clearExpressionValue();
+    console.log(Object.values(expression));
+
+    equalIsClicked = true;
 });
 
-// if (expression.secondOperand !== '0' && isClicked === false) {
-//     operate();
-//     for (key in expression) {
-//         expression[key] = '0';
-//     }
-//     expression.currentOperator = op.textContent;
-//     expression.firstOperand = result;
-// }
 
 
 
-// if (isClicked != true) {
-//     for (key in expression) {
-//         if (expression[key] !== '0') {
-//             temp.tempFirstOperand = expression.firstOperand;
-//             temp.tempCurrentOperator = expression.currentOperator;
-//             temp.secondOperand = expression.secondOperand;
-//         }
-//         expression[key] = '0';
-//     }
-
-//     operate();
-//     expression.firstOperand = currentDisplay.value;
-// }
-
-// Calculate result
-function operate() {
-    let a = expression.firstOperand;
-    let b = expression.secondOperand;
-    let op = expression.currentOperator;
-    // let a = temp.tempFirstOperand;
-    // let b = temp.tempSecondOperand;
-    // let op = temp.tempCurrentOperator;
-
-    if (operations[op]) {
-        result = operations[op](a, b);
-        return currentDisplay.value = result;
-    }
-
-    return null;
-}
-
-function clearDisplay() {
-    currentDisplay.value = "";
-    for (key in expression) {
-        expression[key] = '0';
-    }
-}
