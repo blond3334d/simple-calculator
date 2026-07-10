@@ -22,15 +22,14 @@ body {
     border-radius: 2em;
 }
 
-input {
+input{
     background: none;
     border: none;
     background-color: rgb(210, 230, 247);;
     width: 100%;
     height: 2em;
-
-    padding: 1em;
     text-align: right;
+    padding: 1em;
     font-family: Helvetica, sans-serif;
     font-weight: 600;
     font-size: 2rem;
@@ -78,29 +77,29 @@ button:active {
     padding-top: 1.5rem;
 }
 
-.clearValue {
+.delete {
     width: 25%;
 }
-.clear {
+.all-clear {
     width: 75%;
 }
 
-.clear,
-.clearValue,
+.all-clear,
+.delete,
 .zero {
     background-color:  rgb(40, 46, 100);
     transition: background-color 0.25s;
     color: #b8cedbf5;
 }
 
-.clear:hover,
-.clearValue:hover,
+.all-clear:hover,
+.delete:hover,
 .zero:hover {
     background-color: rgb(50, 60, 145);
     box-shadow: 0 0 20px rgb(128, 137, 223);
 }
-.clear:active,
-.clearValue:active,
+.all-clear:active,
+.delete:active,
 .zero:active {
     background-color: rgb(128, 137, 223);
 }
