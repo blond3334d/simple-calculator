@@ -3,48 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Project: Calculator</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('/img/math-background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            backdrop-filter: blur(15px);
+        }
+    </style>
 </head>
 <body>
-    <div class="calc-body">
+    <h1>CalculADE</h1>
 
-        <div class="input-container">
-            <div class="input">
-                <input class="displaySpace" type="text" name="userInput" id="userInput" placeholder="0" readonly>
+    <div class="calc-container">
+        <div class="calc-body">
+
+            <div class="input-container">
+                <div class="input">
+                    <input class="displaySpace" type="text" name="userInput" id="userInput" placeholder="0" readonly>
+                </div>
             </div>
-        </div>
 
-        <div class="clearBtn">
-            <button class="all-clear" style="grid-area: clear-button">AC</button>
+            <div class="clearBtn">
+                <button class="all-clear" style="grid-area:     clear-button">AC</button>
             
-            <button class="delete">DEL</button>
-        </div>
+                <button class="delete">DEL</button>
+            </div>
 
-        <div class="calc-button">
+            <div class="calc-button">
 
-            <button class="numberBtn">7</button>
-            <button class="numberBtn">8</button>
-            <button class="numberBtn">9</button>
-            <button class="operatorBtn">&divide;</button>
-            <button class="numberBtn">4</button>
-            <button class="numberBtn">5</button>
-            <button class="numberBtn">6</button>
-            <button class="operatorBtn">&times;</button>
-            <button class="numberBtn">1</button>
-            <button class="numberBtn">2</button>
-            <button class="numberBtn">3</button>
-            <button class="operatorBtn">&minus;</button>
-            <button class="numberBtn zero">0</button>
-            <button class="numberBtn dot">.</button>
-            <button class="operatorBtn">&plus;</button>
-            <button class="result equalBtn">&equals;</button>
+                <button class="numberBtn">7</button>
+                <button class="numberBtn">8</button>
+                <button class="numberBtn">9</button>
+                <button class="operatorBtn">&divide;</button>
+                <button class="numberBtn">4</button>
+                <button class="numberBtn">5</button>
+                <button class="numberBtn">6</button>
+                <button class="operatorBtn">&times;</button>
+                <button class="numberBtn">1</button>
+                <button class="numberBtn">2</button>
+                <button class="numberBtn">3</button>
+                <button class="operatorBtn">&minus;</button>
+                <button class="numberBtn zero">0</button>
+                <button class="numberBtn dot">.</button>
+                <button class="operatorBtn">&plus;</button>
+                <button class="result equalBtn">&equals;</button>
 
-        </div>
+            </div>
 
             
+        </div>
     </div>
+
+    <footer>
+        <p>Copyright &copy; blond3334d || The Odin Project 2026</p>
+        <p>&copy; Background Image by 
+Erwan Hesry on Unsplash</p>
+    </footer>
 
     <script src="main.js"></script>
 </body>
