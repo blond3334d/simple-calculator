@@ -6,6 +6,11 @@
 
 body {
     height: 100vh;
+    background-image: url('math-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    backdrop-filter: blur(15px);
 }
 
 h1 {
