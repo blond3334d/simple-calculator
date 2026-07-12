@@ -3,7 +3,7 @@
 
 <p align="center">The final output for The Odin Project's foundations course, applying the core fundamentals of HTML, CSS, and JavaScript.</p>
 
-<p align="center">[Live Demo](https://blond3334d.github.io/simple-calculator/)</p>
+<p align="center"><a href="https://blond3334d.github.io/simple-calculator/">Live Demo</a></p>
 
 ## Features
 * **Calculate:** Obviously! This calculator performs the four basic arithmetic operations: addition, subtraction, multiplication, and division.
