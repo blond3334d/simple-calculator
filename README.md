@@ -1,5 +1,8 @@
 # CalculADE
+<img width="1908" height="1042" alt="Screenshot 2026-07-13 010106" src="https://github.com/user-attachments/assets/b6866816-367b-46a4-9bd5-fcda238b1515" />
 The final output for The Odin Project's foundations course, applying the core fundamentals of HTML, CSS, and JavaScript.
+
+[Live Demo]()
 
 ## Features
 * **Calculate:** Obviously! This calculator performs the four basic arithmetic operations: addition, subtraction, multiplication, and division.
