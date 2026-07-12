@@ -92,6 +92,7 @@ operatorBtns.forEach(btn => {
 
         if(e.target.innerText !== '' && expression.secondOperand !== '') {
             display.value = expression.secondOperand;
+            expression.currentOperator = e.target.innerText;
         }
     })
 })
@@ -113,3 +114,55 @@ deleteBtn.addEventListener("click", () => {
     deleteNum();
     updateDisplay();
 })
+
+// Keyboard Support
+document.body.addEventListener("keydown", (e) => {
+    const validInput = e.key.replace(/[^0-9.]/g,"");
+    const validOp = e.key.replace(/[^+\/*-]/g, "");
+
+    // Operand Input
+    if (expression !== '' && validInput) {
+        if (e.key === '.' && expression.firstOperand.includes('.')) return;
+        expression.firstOperand += e.key;
+        updateDisplay();
+    }
+
+    // Operator Input
+    switch(validOp) {
+        case '+':
+            selectOperator();
+            expression.currentOperator = '+';
+            break;
+        case '-':
+            selectOperator();
+            expression.currentOperator = '−';
+            break;
+        case '*':
+            selectOperator();
+            expression.currentOperator = '×';
+            break;
+        case '/':
+            selectOperator();
+            expression.currentOperator = '÷';
+            break;
+    }
+
+    // Backspace Key 
+    if (e.key === "Backspace") {
+        expression.firstOperand = expression.firstOperand.toString().slice(0, -1);
+        display.value = expression.firstOperand;
+    }
+
+    // Clear All
+    if (e.key === "Control" && e.key === "Backspace") {
+        display.value = '';
+    }
+
+    // Enter Key
+    if (e.key === "Enter" & expression !== '') {
+        if (expression.firstOperand === '') return;
+        console.log(expression.secondOperand);
+        operate();
+    }
+
+});

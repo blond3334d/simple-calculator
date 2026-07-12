@@ -15,7 +15,7 @@ h1 {
     font-weight: 900;
     color: rgba(181, 228, 244, 0.974);
     text-shadow: 0 0 10px rgba(110, 4, 249, 0.974);
-    font-size: clamp(2rem, 10vw, 4rem);
+    font-size: clamp(3rem, 20vw, 4rem);
     opacity: 0.8;
 }
 
@@ -44,6 +44,7 @@ footer {
     box-shadow: 0 0 10px rgba(0, 3, 48, 0.923);
     opacity: 0.8;
     width: 325px;
+    /* width: clamp(20rem, 20vw, 35rem); */
     height: 420px;
     padding: 2em;
     border-radius: 2em;
